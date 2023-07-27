@@ -50,6 +50,11 @@ const TodoForm = () => {
         setTodo('')
     }
 
+    const enterKey=(e)=>{
+        if(e.key==='Enter'){
+            clickBtn()
+        }
+    }
     function delBtn(index){
         let delValue=todos.splice(index,1)
         let filValue=todos.filter((ele)=>ele!==delValue)
@@ -65,7 +70,7 @@ const TodoForm = () => {
     <div className='main'>
         <h2 className='header'>TODO LIST</h2>
         <div className='entry'>
-        <input onChange={changeTxt} className='input' value={todo} type="text" placeholder='enter your todo' />
+        <input onKeyDown={enterKey} onChange={changeTxt} className='input' value={todo} type="text" placeholder='enter your todo' />
         <button onClick={clickBtn} className='btn'>Add</button>
         <TodoShow  todos={todos} editBtn={editBtn} delBtn={delBtn}/>
         </div>
